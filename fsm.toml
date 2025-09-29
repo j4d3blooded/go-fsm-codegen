@@ -1,0 +1,54 @@
+Name="Cat"
+Imports = ["time"]
+PackageName="main"
+UseSLog = true
+
+[Events]
+[Events."Meow"]
+Source=["Walking", "Running", "Idle"]
+Destination="Meowing"
+[[Events."Meow"."Params"]]
+Name="Count"
+Type="int8"
+
+[Events."Stop_Meowing"]
+Source=["Meowing"]
+Destination="Idle"
+
+[Events."Purr"]
+Source=["Walking", "Running", "Idle"]
+Destination="Purring"
+[[Events."Purr"."Params"]]
+Name="Duration"
+Type="time.Time"
+
+[Events."Stop_Purring"]
+Source=["Purring"]
+Destination="Idle"
+
+[Events."Walk"]
+Source=["Idle", "Running"]
+Destination="Walking"
+
+[Events."Run"]
+Source=["Idle", "Walking"]
+Destination="Running"
+
+[Events."Stop"]
+Source=["Walking", "Running"]
+Destination="Idle"
+
+[Events."Sleep"]
+Source=["Idle"]
+Destination="Sleeping"
+
+[Events."Wake_Up"]
+Source=["Sleeping"]
+Destination="Idle"
+
+[Events."Panic"]
+Source=["Running"]
+Destination="Idle"
+[[Events."Panic"."Params"]]
+Name="Cause"
+Type="string"
