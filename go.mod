@@ -1,4 +1,4 @@
-module go-fsm-codegen
+module github.com/j4d3blooded/go-fsm-codegen
 
 go 1.24.5
 
