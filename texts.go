@@ -22,7 +22,7 @@ var a = map[int]string{
 }
 
 const LOOKUP_DEF = `
-var LOOKUP = map[State]string{
+var FSM_STATE_NAME_LOOKUP = map[State]string{
 `
 
 const FSM_DEF = `
