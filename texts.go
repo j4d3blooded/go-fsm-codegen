@@ -17,6 +17,14 @@ const(
 	%v State = iota
 `
 
+var a = map[int]string{
+	0: "a",
+}
+
+const LOOKUP_DEF = `
+var LOOKUP = map[State]string{
+`
+
 const FSM_DEF = `
 type %vFSM struct {
 	State State

@@ -84,6 +84,8 @@ func BuildText(definition FSMDefinition) string {
 	GenerateStateDefinition(&builder, definition, states)
 	GenerateInitalizer(&builder, definition)
 	GenerateFSMDefinition(&builder, definition)
+	GenerateLookup(&builder, states)
+
 	i := 0
 	for eventName, event := range definition.Events {
 		GenerateFSMEvent(&builder, definition, states, i, eventName, event)
@@ -212,6 +214,14 @@ func GenerateInitalizer(builder *strings.Builder, definition FSMDefinition) {
 		definition.Name,
 		_GetNeededUintSize(len(definition.Events)),
 	)
+}
+
+func GenerateLookup(builder *strings.Builder, states _States) {
+	builder.WriteString(LOOKUP_DEF)
+	for i, state := range states {
+		fmt.Fprintf(builder, "%v:\"%v\",\n", i, state)
+	}
+	builder.WriteRune('}')
 }
 
 var (
